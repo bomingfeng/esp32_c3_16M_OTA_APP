@@ -1,0 +1,118 @@
+﻿/*
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x03;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x01;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0x12;//BIT3显示不置位
+ir_ps_data[12] = 0xd7;
+32升温。关（开机状态）静音
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x03;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x01;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0xaa;//BIT3显示置位
+ir_ps_data[12] = 0x1f;
+32升温。关（开机状态）静音
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x1d;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x01;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0x12;//BIT3显示不置位
+ir_ps_data[12] = 0xc7;
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x1d;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x01;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0xaa; //BIT3显示置位
+ir_ps_data[12] = 0x0f;
+31升温。关（开机状态）静音
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x05;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x00;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0x82;  //BIT3显示不置位
+ir_ps_data[12] = 0x22;
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x05;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x06;
+ir_ps_data[5] = 0x00;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x04;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0xaa;//BIT3显示置位
+ir_ps_data[12] = 0x1a;
+28降温 开（开机状态）1风速 
+
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x03;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x05;
+ir_ps_data[5] = 0x00;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x00;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0xa2;//BIT3显示不置位
+ir_ps_data[12] = 0x11;
+
+ir_ps_data[0] = 0xc3;
+ir_ps_data[1] = 0x03;
+ir_ps_data[2] = 0x00;
+ir_ps_data[3] = 0x00;
+ir_ps_data[4] = 0x05;
+ir_ps_data[5] = 0x00;
+ir_ps_data[6] = 0x04;
+ir_ps_data[7] = 0x00;
+ir_ps_data[8] = 0x00;
+ir_ps_data[9] = 0x00;
+ir_ps_data[10] = 0x00;
+ir_ps_data[11] = 0xaa;//BIT3显示置位
+ir_ps_data[12] = 0x19;
+总关机 、
+*/

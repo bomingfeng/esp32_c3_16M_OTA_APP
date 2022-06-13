@@ -1,0 +1,365 @@
+<mxfile host="65bd71144e">
+    <diagram id="5RoPnD_CVL5SY2kz-Fof" name="第 1 页">
+        <mxGraphModel dx="861" dy="408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="main" parent="0"/>
+                <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF0000;" parent="5" source="6" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="main" style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="10" y="10" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF0000;" parent="5" source="7" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <UserObject label="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #ce9178&quot;&gt;Create&amp;nbsp;the&amp;nbsp;event&amp;nbsp;group,Message......&lt;/span&gt;&lt;/div&gt;" link="data:page/id,wrXvrnM50LdYt0AfGH2u" id="7">
+                    <mxCell style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                        <mxGeometry x="140" y="10" width="290" height="60" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" parent="5" source="11" target="21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <UserObject label="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #ce9178&quot;&gt;Init&amp;nbsp;GPIO&amp;nbsp;&amp;amp;&amp;nbsp;nvs_flash.....&lt;/span&gt;&lt;/div&gt;" link="data:page/id,a8jOR9PbANUBgkiXSudt" id="11">
+                    <mxCell style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                        <mxGeometry x="720" y="10" width="220" height="60" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" parent="5" source="15" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#0000CC;" parent="5" source="15" target="24" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1290" y="180" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="575" y="148"/>
+                            <mxPoint x="1265" y="148"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xEventGroupClearBits&lt;/span&gt;(&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;APP_event_group,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;APP_event_BLE_connected_BIT)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="460" y="5" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" parent="5" source="21" target="24" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="xuh0LcmMXdxW7z62aXDx-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#FF0000;" parent="5" source="21" target="xuh0LcmMXdxW7z62aXDx-42" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #ce9178&quot;&gt;Create&amp;nbsp;Task.....&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="970" y="10" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;Create&amp;nbsp;&lt;/span&gt;ble&amp;nbsp;&lt;/div&gt;&lt;span style=&quot;color: rgb(206 , 145 , 120) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; background-color: rgb(30 , 30 , 30)&quot;&gt;Task&lt;/span&gt;&lt;span style=&quot;color: rgb(206 , 145 , 120) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; background-color: rgb(30 , 30 , 30)&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="1550" y="5" width="90" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" parent="5" source="24" target="29" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;APP_event_BLE_connected_BIT&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="1140" y="10" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" parent="5" source="29" target="23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;font style=&quot;font-size: 18px&quot;&gt;if 置1&lt;br&gt;else 等待&lt;/font&gt;&amp;nbsp;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="5" vertex="1">
+                    <mxGeometry x="1430" y="15" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;font style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; font-size: 18px&quot;&gt;置0&lt;br&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                    <mxGeometry x="580" y="80" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <UserObject label="&#10;&#10;&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: consolas, &amp;quot;courier new&amp;quot;, monospace; font-weight: normal; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;systemRebootTask&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#10;&#10;" link="data:page/id,4V1_PrjN0SGX2TlDRRc8" linkTarget="_blank" id="xuh0LcmMXdxW7z62aXDx-42">
+                    <mxCell style="rounded=0;whiteSpace=wrap;html=1;" parent="5" vertex="1">
+                        <mxGeometry x="10" y="170" width="140" height="60" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="a8jOR9PbANUBgkiXSudt" name="Init GPIO &amp; nvs_flash">
+        <mxGraphModel dx="734" dy="408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="EBEWQ9Gt5BE9U0cSNTgu-0"/>
+                <mxCell id="EBEWQ9Gt5BE9U0cSNTgu-1" parent="EBEWQ9Gt5BE9U0cSNTgu-0"/>
+                <mxCell id="EBEWQ9Gt5BE9U0cSNTgu-2" value="&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: consolas, &amp;quot;courier new&amp;quot;, monospace; font-weight: normal; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;/*&amp;nbsp;IO&amp;nbsp;初始化&amp;nbsp;*/&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_reset_pin&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;3&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_reset_pin&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;4&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_reset_pin&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;5&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_reset_pin&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;18&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_reset_pin&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;19&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_level&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;18&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//白&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_level&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;19&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//橙&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_level&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;3&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//三色灯红&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_level&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;4&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//三色灯绿&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_level&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;5&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//三色灯橙&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_direction&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;3&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;GPIO_MODE_OUTPUT);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_direction&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;4&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;GPIO_MODE_OUTPUT);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_direction&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;5&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;GPIO_MODE_OUTPUT);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_direction&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;18&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;GPIO_MODE_OUTPUT);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;gpio_set_direction&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;19&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;,&amp;nbsp;GPIO_MODE_OUTPUT);&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;//Initialize&amp;nbsp;NVS&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #4ec9b0&quot;&gt;esp_err_t&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;ret&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;nvs_flash_init&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #c586c0&quot;&gt;if&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;(ret&amp;nbsp;==&amp;nbsp;ESP_ERR_NVS_NO_FREE_PAGES&amp;nbsp;||&amp;nbsp;ret&amp;nbsp;==&amp;nbsp;ESP_ERR_NVS_NEW_VERSION_FOUND)&amp;nbsp;{&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;ESP_ERROR_CHECK&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;nvs_flash_erase&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;());&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ret&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;nvs_flash_init&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;ESP_ERROR_CHECK&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(ret);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" parent="EBEWQ9Gt5BE9U0cSNTgu-1" vertex="1">
+                    <mxGeometry x="10" y="10" width="550" height="470" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="wrXvrnM50LdYt0AfGH2u" name="Create the event group,Message">
+        <mxGraphModel dx="734" dy="408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="6lZweEzdF3mglzrQLffI-0"/>
+                <mxCell id="6lZweEzdF3mglzrQLffI-1" parent="6lZweEzdF3mglzrQLffI-0"/>
+                <mxCell id="dxI5uqgQ3DgWFzppWgE1-0" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-weight: normal ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;APP_event_group&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xEventGroupCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;();&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;ble_degC&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;ds18b20degC&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;esp32degC&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;tcp_send_data&amp;nbsp;&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;132&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;ir_rx_data&amp;nbsp;&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;17&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;ir_tx_data&amp;nbsp;=&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;17&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;IRPS_temp&amp;nbsp;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferCreate&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;8&lt;/span&gt;&lt;span style=&quot;color: #d4d4d4&quot;&gt;);&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" parent="6lZweEzdF3mglzrQLffI-1" vertex="1">
+                    <mxGeometry x="10" y="10" width="390" height="190" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="4V1_PrjN0SGX2TlDRRc8" name="systemRebootTask">
+        <mxGraphModel dx="861" dy="408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="w1-R2uyAYLQS4_3xLMUT-0"/>
+                <mxCell id="w1-R2uyAYLQS4_3xLMUT-1" parent="w1-R2uyAYLQS4_3xLMUT-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="jwjxFZlvrrOfplzSQp87" name="IRps_task">
+        <mxGraphModel dx="845" dy="390" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="FIXEF99QvNn8nzT5pElE-0"/>
+                <mxCell id="FIXEF99QvNn8nzT5pElE-1" parent="FIXEF99QvNn8nzT5pElE-0"/>
+                <mxCell id="COegxrftvjGJvGCBfeYD-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-0" target="COegxrftvjGJvGCBfeYD-1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-19" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF0000;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-0" target="COegxrftvjGJvGCBfeYD-34">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="660" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-0" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;开始&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="40" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420" y="110" as="targetPoint"/>
+                        <mxPoint x="520" y="225" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="220"/>
+                            <mxPoint x="510" y="220"/>
+                            <mxPoint x="510" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-6" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-1" target="COegxrftvjGJvGCBfeYD-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-1" value="&lt;font style=&quot;font-size: 14px&quot;&gt;&lt;span style=&quot;color: rgb(212 , 212 , 212) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; background-color: rgb(30 , 30 , 30)&quot;&gt;等待接收IR数据&lt;br&gt;ir_rx_data；&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(212 , 212 , 212) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; background-color: rgb(30 , 30 , 30)&quot;&gt;ir_ps_data[13]&lt;/span&gt;&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="340" y="140" width="160" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-8" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-5" target="COegxrftvjGJvGCBfeYD-7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-5" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;存储到RTC RAM&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;sleep_ir_data&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-14" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-7" target="COegxrftvjGJvGCBfeYD-13">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-16" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-7" target="COegxrftvjGJvGCBfeYD-15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-7" value="空调是否开机" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="365" y="430" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-23" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FFFFFF;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-13" target="HiOEBD3FBy5xvAHT-9AV-20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-13" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #6a9955&quot;&gt;关掉进入IO休眠定时器&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="560" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-33" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-15" target="COegxrftvjGJvGCBfeYD-32">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-15" value="&lt;span&gt;设定要发送出去的关机码&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: rgb(156 , 220 , 254)&quot;&gt;ir_ps_data[13]&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="750" y="455" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-20" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-17" target="COegxrftvjGJvGCBfeYD-19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-22" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-17" target="COegxrftvjGJvGCBfeYD-21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-17" value="判断空调&lt;br&gt;是否定时数据" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="365" y="710" width="110" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-24" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-19" target="COegxrftvjGJvGCBfeYD-43">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="620" y="920" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-26" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-19" target="COegxrftvjGJvGCBfeYD-25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-19" value="计算出定时时间,&lt;br&gt;修改定时器时间，&lt;br&gt;开始定时器。" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="870" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-23" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-21" target="COegxrftvjGJvGCBfeYD-19">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="570" y="910" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="570" y="900"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-21" value="没定设空调定时时间时，默认10小时" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="510" y="740" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-28" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-25" target="COegxrftvjGJvGCBfeYD-27">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-29" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-25" target="2uQhAA_9TpH0Wi0I4TUW-0">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="1205" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-25" value="计算出空调设定的温度，&lt;br&gt;并发送出去&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferSend&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(IRPS_temp,&amp;amp;IR_temp,&lt;span style=&quot;color: #b5cea8&quot;&gt;4&lt;/span&gt;,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;portMAX_DELAY);&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="330" y="1085" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-21" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FFFFFF;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-27" target="COegxrftvjGJvGCBfeYD-37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-27" value="设定要发送出去的开机码&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;ir_ps_data[13]&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="1270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-35" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-32" target="COegxrftvjGJvGCBfeYD-34">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-32" value="清除开机LED灯&lt;br&gt;置位待机LED灯" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="750" y="570" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-36" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-34" target="HiOEBD3FBy5xvAHT-9AV-5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="910" y="790" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-39" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-34" target="COegxrftvjGJvGCBfeYD-37">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="1340" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="810" y="1480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-34" value="启动进入IO休眠定时器" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="750" y="670" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-41" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-37">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420" y="110" as="targetPoint"/>
+                        <mxPoint x="430" y="1570" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="420" y="1560"/>
+                            <mxPoint x="280" y="1560"/>
+                            <mxPoint x="280" y="110"/>
+                            <mxPoint x="320" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2uQhAA_9TpH0Wi0I4TUW-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-37" target="2uQhAA_9TpH0Wi0I4TUW-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-37" value="发送数据到TX_IR&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferSend&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(ir_tx_data,ir_ps_data,&lt;span style=&quot;color: #b5cea8&quot;&gt;13&lt;/span&gt;,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;100&lt;/span&gt;/portTICK_PERIOD_MS);&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="315" y="1440" width="210" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-40" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-37" target="COegxrftvjGJvGCBfeYD-37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-3" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-43" target="COegxrftvjGJvGCBfeYD-45">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-43" value="关掉关空调定时器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="570" y="930" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-44" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-43" target="COegxrftvjGJvGCBfeYD-43">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.369;entryY=-0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-45" target="COegxrftvjGJvGCBfeYD-47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-45" value="设定要发送出去的关空调码&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;ir_ps_data[13]&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="570" y="1030" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-0" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.374;exitY=0.988;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-47" target="COegxrftvjGJvGCBfeYD-52">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-17" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-47">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="790" y="1230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-47" value="发送数据到TX_IR&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferSend&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(ir_tx_data,ir_ps_data,&lt;span style=&quot;color: #b5cea8&quot;&gt;13&lt;/span&gt;,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;100&lt;/span&gt;/portTICK_PERIOD_MS);&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="552.5" y="1120" width="210" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-15" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-49">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="750" y="1390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-49" value="置时间休眠5S位&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xEventGroupSetBits&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(APP_event_group,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;APP_event_deepsleep_BIT);&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;相当于重起，目的关掉蓝牙连接&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="532.5" y="1330" width="195" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-1" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="COegxrftvjGJvGCBfeYD-52" target="COegxrftvjGJvGCBfeYD-49">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="COegxrftvjGJvGCBfeYD-52" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;清零RTC RAM&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;sleep_ir_data&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="570" y="1240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <UserObject label="" link="data:page/id,ggzYCPgYqBSDguUO2Ads" id="2uQhAA_9TpH0Wi0I4TUW-0">
+                    <mxCell style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                        <mxGeometry x="512.5" y="1215" width="20" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <UserObject label="" id="2uQhAA_9TpH0Wi0I4TUW-2">
+                    <mxCell style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                        <mxGeometry x="532.5" y="1560" width="20" height="20" as="geometry"/>
+                    </mxCell>
+                </UserObject>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-10" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-5" target="HiOEBD3FBy5xvAHT-9AV-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-5" value="关掉IO休眠定时器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="887.5" y="790" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-12" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-6" target="HiOEBD3FBy5xvAHT-9AV-7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-6" value="设定要发送出去的关空调码&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;ir_ps_data[13]&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="887.5" y="890" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-13" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-7" target="HiOEBD3FBy5xvAHT-9AV-9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-18" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1100" y="1100" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-7" value="发送数据到TX_IR&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xMessageBufferSend&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(ir_tx_data,ir_ps_data,&lt;span style=&quot;color: #b5cea8&quot;&gt;13&lt;/span&gt;,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #b5cea8&quot;&gt;100&lt;/span&gt;/portTICK_PERIOD_MS);&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="870" y="980" width="210" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-16" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-8">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1080" y="1250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-8" value="置时间IO休眠位&lt;br&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #dcdcaa&quot;&gt;xEventGroupSetBits&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;(APP_event_group,&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace&quot;&gt;APP_event_IO_wakeup_sleep_BIT&lt;/span&gt;);&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="850" y="1190" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-14" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-9" target="HiOEBD3FBy5xvAHT-9AV-8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-9" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;清零RTC RAM&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;color: #9cdcfe&quot;&gt;sleep_ir_data&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="887.5" y="1100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-22" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FFFFFF;" edge="1" parent="FIXEF99QvNn8nzT5pElE-1" source="HiOEBD3FBy5xvAHT-9AV-20" target="COegxrftvjGJvGCBfeYD-17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="HiOEBD3FBy5xvAHT-9AV-20" value="置位开机LED灯&lt;br&gt;清除待机LED灯" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="FIXEF99QvNn8nzT5pElE-1">
+                    <mxGeometry x="360" y="640" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="ggzYCPgYqBSDguUO2Ads" name="tempps_task">
+        <mxGraphModel dx="861" dy="408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="clgoCHYnV3MdHhIM-055-0"/>
+                <mxCell id="clgoCHYnV3MdHhIM-055-1" parent="clgoCHYnV3MdHhIM-055-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
