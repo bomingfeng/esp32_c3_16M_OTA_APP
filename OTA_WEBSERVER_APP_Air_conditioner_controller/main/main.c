@@ -41,10 +41,9 @@ extern MessageBufferHandle_t IRPS_temp;
 extern MessageBufferHandle_t time_hour_min;
 extern MessageBufferHandle_t HtmlToMcuData;
 extern TimerHandle_t time_sleep_timers;
-extern MessageBufferHandle_t adc_config;
 
-extern int32_t BLe_battery;
-extern nvs_handle_t BLe_battery_handle;
+
+nvs_handle_t my_handle;
 
 void test_test(void * arg)
 {
@@ -172,7 +171,7 @@ void app_main()
     ir_tx_data =  xMessageBufferCreate(17);
     IRPS_temp = xMessageBufferCreate(8);
     HtmlToMcuData = xMessageBufferCreate(100);
-    adc_config = xMessageBufferCreate(8);
+
     //printf("Init GPIO & nvs_flash.....\r\n");
     app_init();
 
@@ -222,38 +221,7 @@ void app_main()
     }
 
 
-        // Open
-    //printf("\n");
-    //printf("Opening Non-Volatile Storage (NVS) handle... ");
-    esp_err_t err = nvs_open("storage", NVS_READWRITE, &BLe_battery_handle);
-    if (err != ESP_OK) 
-    {
-       //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
-    }
-    else 
-    {
-        //printf("Done\n");
-
-        // Read
-        //printf("Reading restart counter from NVS ... \n");
-        
-        err = nvs_get_i32(BLe_battery_handle, "BLe_battery", &BLe_battery);
-        switch (err) 
-        {
-            case ESP_OK:
-                //printf("Done\n");
-                //printf("Restart counter = %d\n", BLe_battery);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                //printf("The value is not initialized yet!\n");
-                break;
-            default :
-                //printf("Error (%s) reading!\n", esp_err_to_name(err));
-                break;
-        }
-        // Close
-        nvs_close(BLe_battery_handle);
-    }
+    
 
     xTaskCreate(MultiButton_poll_Task, "Button_poll_Task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
     xTaskCreate(sntp_task, "sntp_task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);

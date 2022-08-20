@@ -1,6 +1,5 @@
 #include "BLE_Client.h"
 
-nvs_handle_t BLe_battery_handle;
 int32_t BLe_battery;
 
 #ifdef  LYWSD03MMC

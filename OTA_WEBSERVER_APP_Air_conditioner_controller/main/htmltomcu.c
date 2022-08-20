@@ -1,8 +1,9 @@
 #include "htmltomcu.h"
 
+extern nvs_handle_t my_handle;
 extern TimerHandle_t time_sleep_timers;
 extern MessageBufferHandle_t HtmlToMcuData;
-MessageBufferHandle_t adc_config;
+
 
 void htmltomcudata_task(void * arg)
 {
@@ -11,64 +12,13 @@ void htmltomcudata_task(void * arg)
 
     char ssid[32];      
     char password[64];
-    size_t len;
 
     uint32_t adc_data  = 168,ac_time = 0;
     int hour = 0,min = 0;
     time_t now;
     struct tm timeinfo;
 
-    // Open
-    //printf("\n");
-    //printf("Opening Non-Volatile Storage (NVS) handle... ");
-    nvs_handle_t my_handle;
-    esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
-    if (err != ESP_OK) 
-    {
-       //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
-    }
-    else 
-    {
-        //printf("Done\n");
-
-        // Read
-        //printf("Reading restart counter from NVS ... \n");
-        len = sizeof(ssid);
-        err = nvs_get_str(my_handle, "wifissid", ssid, &len);
-        switch (err) 
-        {
-            case ESP_OK:
-                //printf("Done\n");
-                printf("wifissid:%s\n",ssid);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                //printf("The value is not initialized yet!\n");
-                break;
-            default :
-                //printf("Error (%s) reading!\n", esp_err_to_name(err));
-                break;
-        }
-        len = sizeof(password);
-        err = nvs_get_str(my_handle, "wifipass", password, &len);
-        switch (err) 
-        {
-            case ESP_OK:
-                //printf("Done\n");
-                printf("wifipass:%s\n",password);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                //printf("The value is not initialized yet!\n");
-                break;
-            default :
-                //printf("Error (%s) reading!\n", esp_err_to_name(err));
-                break;
-        }
-
-        
-
-        // Close
-        nvs_close(my_handle);
-    }
+    esp_err_t err;
 
     while(1)
     {
@@ -259,8 +209,6 @@ void htmltomcudata_task(void * arg)
                 xTimerReset(time_sleep_timers,portMAX_DELAY);   //IR接收到的定时关空调时间并启动
                 printf("时间模式关 ok:hour%d:min%d;\r\n",hour,min);
             }
-        }
-        memset(data,'\0',sizeof(data));
-        //xMessageBufferSend(adc_config,&adc_data,4,portMAX_DELAY);
+        }        
     }
 }

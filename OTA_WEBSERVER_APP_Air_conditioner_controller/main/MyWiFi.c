@@ -24,6 +24,7 @@ extern char * tcprx_buffer;
 extern MessageBufferHandle_t tcp_send_data;
 extern httpd_handle_t OTA_server;
 extern uint8_t ip_addr1,ip_addr2,ip_addr3,ip_addr4;
+extern nvs_handle_t my_handle;
 
 void MyWiFi_init(void)
 {
@@ -495,7 +496,7 @@ void wifi_ap_sta(void *pvParam)
 	vTaskDelete(NULL);
 	*/
 }
-
+#if 1
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 /*************************************************
@@ -534,8 +535,6 @@ static void WIFI_vInitCommon(void)
 
 static void WIFI_vConfigSoftAP(void)
 {
-	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
-
 	// configure the wifi connection and start the interface
 	wifi_config_t ap_config = {
 		.ap = {
@@ -574,13 +573,66 @@ static void WIFI_vConfigSoftAP(void)
 
 static void WIFI_vConfigStation(void)
 {
-	//ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
-	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+	size_t len;
+	char ssid[32];      
+    char password[64];
+	// Open
+    //printf("\n");
+    //printf("Opening Non-Volatile Storage (NVS) handle... ");
+
+    esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
+    if (err != ESP_OK) 
+    {
+       //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
+    }
+    else 
+    {
+        //printf("Done\n");
+
+        // Read
+        //printf("Reading restart counter from NVS ... \n");
+        len = sizeof(ssid);
+        err = nvs_get_str(my_handle, "wifissid", ssid, &len);
+        switch (err) 
+        {
+            case ESP_OK:
+                //printf("Done\n");
+                printf("wifissid:%s\n",ssid);
+                break;
+            case ESP_ERR_NVS_NOT_FOUND:
+                //printf("The value is not initialized yet!\n");
+                break;
+            default :
+                //printf("Error (%s) reading!\n", esp_err_to_name(err));
+                break;
+        }
+        len = sizeof(password);
+        err = nvs_get_str(my_handle, "wifipass", password, &len);
+        switch (err) 
+        {
+            case ESP_OK:
+                //printf("Done\n");
+                printf("wifipass:%s\n",password);
+                break;
+            case ESP_ERR_NVS_NOT_FOUND:
+                //printf("The value is not initialized yet!\n");
+                break;
+            default :
+                //printf("Error (%s) reading!\n", esp_err_to_name(err));
+                break;
+        }
+
+        
+
+        // Close
+        nvs_close(my_handle);
+    }
+	
 	
 	wifi_config_t wifi_config = {
 		.sta = {
 			.ssid = CONFIG_STATION_SSID,
-			.password = CONFIG_STATION_PASSPHRASE
+			.password = CONFIG_STATION_PASSPHRASE,
 
 			/* Setting a password implies station will connect to all security modes including WEP/WPA.
 			* However these modes are deprecated and not advisable to be used. Incase your Access point
@@ -601,39 +653,73 @@ static void WIFI_vConfigStation(void)
 
 void vTaskWifiHandler( void * pvParameters )
 {
-    tenWifiModes enWifiMode = WIFI_enCheckProvisioningData();
+    wifi_mode_t enWifiMode;
 
-    ESP_LOGI(TAG,"Starting Wifi Task with %d ms period!", (*(uint8_t*)pvParameters));
+	// Open
+    //printf("\n");
+    //printf("Opening Non-Volatile Storage (NVS) handle... ");
+    esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
+    if (err != ESP_OK) 
+    {
+       //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
+    }
+    else 
+    {
+        //printf("Done\n");
+
+        // Read
+        //printf("Reading restart counter from NVS ... \n");
+        
+        err = nvs_get_i8(my_handle, "wifi_mode", &enWifiMode);
+        switch (err) 
+        {
+            case ESP_OK:
+                //printf("Done\n");
+                printf("wifi_mode:%s\n",enWifiMode);
+                break;
+            case ESP_ERR_NVS_NOT_FOUND:
+                //printf("The value is not initialized yet!\n");
+                break;
+            default :
+                //printf("Error (%s) reading!\n", esp_err_to_name(err));
+                break;
+        }       
+        // Close
+        nvs_close(my_handle);
+    }
+
+ 
 
     /* Initializing Wi-Fi Station / AccessPoint*/
     WIFI_vInitCommon();
-    WIFI_boHwInitDone = true;
     switch(enWifiMode)
     {
-        case enStationMode:
-            ESP_LOGI(TAG,"Wifi Station initializing!");
-            ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+		case WIFI_MODE_NULL:
+		break;
+		case WIFI_MODE_APSTA:
+		break;
+		case WIFI_MODE_MAX:
+		break;
+
+        case WIFI_MODE_STA:
+			//ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+			ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
             WIFI_vConfigStation();
         break;
 
-        case enSoftAPMode:
-            ESP_LOGI(TAG,"Wifi AccessPoint initializing!");
-            ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+        case WIFI_MODE_AP:
+			ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
             WIFI_vConfigSoftAP();
         break;
 
         default:
-            ESP_LOGE(TAG, "Unsuported Wifi Mode: %d", enWifiMode);
         break;
     }
 
-	/* Start Wi-Fi Station / AccessPoint*/
-	ESP_ERROR_CHECK(esp_wifi_start());
-	ESP_LOGI(TAG, "Main task: waiting for connection to the wifi network... ");
-
+#if 0
     for(;;)
 	{
-        if(enWifiMode == enStationMode)
+        if(enWifiMode == WIFI_MODE_STA)
         {
             // wait for connection or disconnect event
             EventBits_t bits = xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT | CONNECTION_FAILED_BIT, false, false, portMAX_DELAY);
@@ -662,7 +748,7 @@ void vTaskWifiHandler( void * pvParameters )
                 ESP_LOGE(TAG, "Unexpected event");
             }
         }
-        else if(enWifiMode == enSoftAPMode)
+        else if(enWifiMode == WIFI_MODE_AP)
         {
             enWifiMode = WIFI_enCheckProvisioningData();
             ESP_LOGV(TAG,"Wifi Mode: %d",enWifiMode);
@@ -684,6 +770,10 @@ void vTaskWifiHandler( void * pvParameters )
         }
 		//WIFI_vMainFunc();
 		vTaskDelay((*(uint8_t*)pvParameters) / portTICK_PERIOD_MS);
+
 	}
+	#endif
     vTaskDelete(NULL);
+	
 }
+#endif

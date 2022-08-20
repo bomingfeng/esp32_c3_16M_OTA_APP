@@ -15,6 +15,8 @@
 #include "ADC1_single_read_Task.h"
 #include "LED_Seg7Menu/LED_Seg7Menu.h"
 
+
+
 //ADC Channels
 #if CONFIG_IDF_TARGET_ESP32
         #define ADC1_EXAMPLE_CHAN0          ADC1_CHANNEL_7
@@ -26,9 +28,10 @@
 //ADC Attenuation
 #define ADC_EXAMPLE_ATTEN           ADC_ATTEN_DB_11
 
+extern nvs_handle_t my_handle;
 extern TimerHandle_t Seg7Timers;
 extern uint32_t sse_data[sse_len];
-extern MessageBufferHandle_t adc_config;
+
 
 void ADC1_single_read_Task(void *pvParam)
 {
@@ -39,7 +42,6 @@ void ADC1_single_read_Task(void *pvParam)
     ESP_ERROR_CHECK(adc1_config_channel_atten(ADC1_EXAMPLE_CHAN0, ADC_EXAMPLE_ATTEN));
  
     while (1) {
-        //xMessageBufferReceive(adc_config,&adc_config1,4,(1000 / portTICK_PERIOD_MS)/*min*/ * 10);
         adc1_data = adc1_get_raw(ADC1_EXAMPLE_CHAN0);
         sse_data[2] = adc1_data;
         if(adc1_data >= adc_config1)
@@ -57,7 +59,7 @@ void ADC1_single_read_Task(void *pvParam)
         // Open
         //printf("\n");
         //printf("Opening Non-Volatile Storage (NVS) handle... ");
-        nvs_handle_t my_handle;
+        
         esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
         if (err != ESP_OK) 
         {

@@ -13,7 +13,7 @@ extern MessageBufferHandle_t time_hour_min;
 extern RTC_DATA_ATTR uint8_t sleep_ir_data[13];
 
 extern int32_t BLe_battery;
-extern nvs_handle_t BLe_battery_handle;
+extern nvs_handle_t my_handle;
 extern ledc_channel_config_t ledc_channel[2];
 
 extern uint32_t sse_data[sse_len];
@@ -589,7 +589,41 @@ void tempps_task(void *arg)
     VoltageL = 0xaa;
     VoltageH = 0xaa;
     Voltage_ble = BLe_battery_low + 1;
-    TickType_t xLastWakeTime = xTaskGetTickCount();//获取当前系统时间
+    //TickType_t xLastWakeTime = xTaskGetTickCount();//获取当前系统时间
+
+    // Open
+    //printf("\n");
+    //printf("Opening Non-Volatile Storage (NVS) handle... ");
+    esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
+    if (err != ESP_OK) 
+    {
+       //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
+    }
+    else 
+    {
+        //printf("Done\n");
+
+        // Read
+        //printf("Reading restart counter from NVS ... \n");
+        
+        err = nvs_get_i32(my_handle, "BLe_battery", &BLe_battery);
+        switch (err) 
+        {
+            case ESP_OK:
+                //printf("Done\n");
+                //printf("Restart counter = %d\n", BLe_battery);
+                break;
+            case ESP_ERR_NVS_NOT_FOUND:
+                //printf("The value is not initialized yet!\n");
+                break;
+            default :
+                //printf("Error (%s) reading!\n", esp_err_to_name(err));
+                break;
+        }
+        // Close
+        nvs_close(my_handle);
+    }
+
     while(1)
     {
         xMessageBufferReceive(IRPS_temp,&IR_temp,4,100/portTICK_PERIOD_MS);
@@ -624,7 +658,7 @@ void tempps_task(void *arg)
             // Open
             //printf("\n");
             //printf("Opening Non-Volatile Storage (NVS) handle... ");
-            esp_err_t err = nvs_open("storage", NVS_READWRITE, &BLe_battery_handle);
+            esp_err_t err = nvs_open("storage", NVS_READWRITE, &my_handle);
             if (err != ESP_OK) 
             {
             //printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
@@ -634,7 +668,7 @@ void tempps_task(void *arg)
                 //printf("Done\n");
                 // Write
                 //printf("Updating restart counter in NVS ... ");
-                err = nvs_set_i32(BLe_battery_handle, "BLe_battery", BLe_battery);
+                err = nvs_set_i32(my_handle, "BLe_battery", BLe_battery);
                 //printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
 
                 // Commit written value.
@@ -642,11 +676,11 @@ void tempps_task(void *arg)
                 // to flash storage. Implementations may write to storage at other times,
                 // but this is not guaranteed.
                 //printf("Committing updates in NVS ... ");
-                err = nvs_commit(BLe_battery_handle);
+                err = nvs_commit(my_handle);
                 //printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
             }
             // Close
-            nvs_close(BLe_battery_handle);
+            nvs_close(my_handle);
         }
 
 
