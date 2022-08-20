@@ -4,21 +4,6 @@
   "idf.openOcdConfigs": [
     "board/esp32c3-builtin.cfg"
   ],
-  "idf.portWin": "COM4",
-  "idf.flashType": "UART",
-  "files.associations": {
-    "string_view": "c",
-    "ir_tools.h": "c",
-    "ir_timings.h": "c",
-    "ets_sys.h": "c",
-    "ds18x20.h": "c",
-    "onewire.h": "c",
-    "xlocale": "c",
-    "xstring": "c",
-    "esp_sleep.h": "c",
-    "freertos.h": "c",
-    "freertosconfig.h": "c",
-    "message_buffer.h": "c",
-    "event_groups.h": "c"
-  }
+  "idf.portWin": "COM5",
+  "idf.flashType": "UART"
 }

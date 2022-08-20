@@ -2,13 +2,13 @@ menu "Example Configuration"
 
 config STATION_SSID
     string "Station SSID"
-	default "fengboming"
+	default "C103"
 	help
 		SSID (network name) for the example to connect to.
 
 config STATION_PASSPHRASE
     string "Station Passphrase"
-	default "bomingfeng1"
+	default "C10396956"
 	help
 		WiFi password (WPA or WPA2) for the example to use.
 		Can be left blank if the network has no security set.

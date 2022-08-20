@@ -168,6 +168,7 @@ static esp_err_t YAPOF3_parser_get_scan_code(ir_parser_t *parser, uint32_t *pars
 
         *parserdata1 = rx_buf1;
         *parserdata2 = rx_buf2;
+        YAPOF3_parser->cursor += 1;
         ret = ESP_OK;
     }
     return ret;

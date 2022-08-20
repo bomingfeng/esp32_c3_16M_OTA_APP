@@ -627,13 +627,6 @@ C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/freemodbus/
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/freemodbus/CMakeFiles/edit_cache.dir
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/freemodbus/CMakeFiles/list_install_components.dir
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/freemodbus/CMakeFiles/install/strip.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/__idf_hd44780.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/install/local.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/install.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/edit_cache.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/rebuild_cache.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/list_install_components.dir
-C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hd44780/CMakeFiles/install/strip.dir
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hmc5883l/CMakeFiles/install/strip.dir
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hmc5883l/CMakeFiles/__idf_hmc5883l.dir
 C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/esp-idf/hmc5883l/CMakeFiles/install/local.dir

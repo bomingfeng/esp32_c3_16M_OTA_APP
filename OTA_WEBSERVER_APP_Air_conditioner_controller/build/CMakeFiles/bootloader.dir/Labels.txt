@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/CMakeFiles/bootloader
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/CMakeFiles/bootloader.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/CMakeFiles/bootloader-complete.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/CMakeFiles/bootloader
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/CMakeFiles/bootloader.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/CMakeFiles/bootloader-complete.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule

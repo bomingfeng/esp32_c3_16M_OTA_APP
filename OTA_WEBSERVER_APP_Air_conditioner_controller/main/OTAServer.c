@@ -11,6 +11,7 @@
 httpd_handle_t OTA_server = NULL;
 int8_t flash_status = 0;
 TimerHandle_t	xTimer_ota;
+MessageBufferHandle_t HtmlToMcuData;
 
 // Embedded Files. To add or remove make changes is component.mk file as well. 
 extern const uint8_t index_html_start[] asm("_binary_index_html_start");
@@ -49,7 +50,7 @@ void OTA_Task_init(void)
     io_conf.pull_down_en = 0;
     gpio_config(&io_conf);
 
-	xTimer_ota = xTimerCreate("xTimer_ota",6000 * 5,pdFALSE,( void * ) 0,vTimerotaCallback);//30min
+	xTimer_ota = xTimerCreate("xTimer_ota",(60000 / portTICK_PERIOD_MS)/*min*/ * 5,pdFALSE,( void * ) 0,vTimerotaCallback);//5min
 
 	// Clear the bit
 	xEventGroupClearBits(APP_event_group,APP_event_REBOOT_BIT | APP_event_deepsleep_BIT | APP_event_IO_wakeup_sleep_BIT | APP_event_io_sleep_timer_BIT);
@@ -84,17 +85,17 @@ void systemRebootTask(void * parameter)
 
 		if((staBits & APP_event_deepsleep_BIT) != 0)
 		{
-			printf("restart to deep_sleep");
+			//printf("restart to deep_sleep");
 			vTaskDelay(3000 / portTICK_PERIOD_MS);
 			esp_deep_sleep(1000000LL * 5);	//2s
 		}
-
+/*
 		if(gpio_get_level(CONFIG_INPUT_GPIO) == 0x00)
 		{
 			keycon++;
 			if(keycon >= 10)
 			{
-				gpio_set_level(18, 1);
+				xEventGroupSetBits(APP_event_group,APP_event_IR_LED_flags_BIT);
 				keycon = 0;
 				partition = esp_partition_find_first(ESP_PARTITION_TYPE_APP,    \
 				ESP_PARTITION_SUBTYPE_APP_FACTORY, NULL);
@@ -111,22 +112,27 @@ void systemRebootTask(void * parameter)
 		{
 			keycon = 0;
 		}
-
-		if((staBits & APP_event_IO_wakeup_sleep_BIT) != 0)
+*/
+		/*if((staBits & APP_event_IO_wakeup_sleep_BIT) != 0)
 		{
-			const gpio_config_t config = {
-										.pin_bit_mask = BIT(1),
-										.mode = GPIO_MODE_INPUT,
-										};
-			ESP_ERROR_CHECK(gpio_config(&config));
-			ESP_ERROR_CHECK(esp_deep_sleep_enable_gpio_wakeup(BIT(1), ESP_GPIO_WAKEUP_GPIO_LOW));
-			printf("Enabling GPIO wakeup on pins GPIO%d\n", 1);
+    		const int ext_wakeup_pin_1 = 2;
+    		const uint64_t ext_wakeup_pin_1_mask = 1ULL << ext_wakeup_pin_1;
+			printf("Enabling EXT1 wakeup on pins GPIO%d\n", ext_wakeup_pin_1);
+            esp_sleep_enable_ext1_wakeup(ext_wakeup_pin_1_mask, ESP_EXT1_WAKEUP_ALL_LOW);
+
+			// Isolate GPIO12 pin from external circuits. This is needed for modules
+			// which have an external pull-up resistor on GPIO12 (such as ESP32-WROVER)
+			// to minimize current consumption.
+			rtc_gpio_isolate(GPIO_NUM_12);
+
+			printf("Entering deep sleep\n");
 			sleep_keep &= ~sleep_keep_WIFI_AP_OR_STA_BIT;
 			esp_deep_sleep_start();
-		}
-		
+		}*/
 	}
+		
 }
+
 
 
 /* Send index.html Page */
@@ -138,7 +144,7 @@ esp_err_t OTA_index_html_handler(httpd_req_t *req)
 
 	ESP_LOGI("OTA", "index.html Requested");
 
-	// Clear this every time page is requested
+	// Clear this every time page is requested 每次请求页面时清除此内容
 	flash_status = 0;
 	
 	httpd_resp_set_type(req, "text/html");
@@ -147,6 +153,7 @@ esp_err_t OTA_index_html_handler(httpd_req_t *req)
 
 	return ESP_OK;
 }
+
 /* Send .ICO (icon) file  */
 esp_err_t OTA_favicon_ico_handler(httpd_req_t *req)
 {
@@ -158,6 +165,7 @@ esp_err_t OTA_favicon_ico_handler(httpd_req_t *req)
 
 	return ESP_OK;
 }
+
 /* jquery GET handler */
 esp_err_t jquery_3_4_1_min_js_handler(httpd_req_t *req)
 {
@@ -176,7 +184,7 @@ esp_err_t OTA_update_status_handler(httpd_req_t *req)
 	char ledJSON[100];
 	
 	ESP_LOGI("OTA", "Status Requested");
-	
+
 	sprintf(ledJSON, "{\"status\":%d,\"compile_time\":\"%s\",\"compile_date\":\"%s\"}", flash_status, __TIME__, __DATE__);
 	httpd_resp_set_type(req, "application/json");
 	httpd_resp_send(req, ledJSON, strlen(ledJSON));
@@ -202,7 +210,7 @@ esp_err_t OTA_update_post_handler(httpd_req_t *req)
 	bool is_req_body_started = false;
 	const esp_partition_t *update_partition = esp_ota_get_next_update_partition(NULL);
 
-	// Unsucessful Flashing
+	// Unsucessful Flashing 
 	flash_status = -1;
 	
 	do
@@ -220,10 +228,10 @@ esp_err_t OTA_update_post_handler(httpd_req_t *req)
 			return ESP_FAIL;
 		}
 
-		printf("OTA RX: %d of %d\r", content_received, content_length);
+		//printf("OTA RX: %d of %d\r", content_received, content_length);
 		
-	    // Is this the first data we are receiving
-		// If so, it will have the information in the header we need. 
+	    // Is this the first data we are receiving 这是我们收到的第一个数据吗？
+		// If so, it will have the information in the header we need. 如果是这样，它将在我们需要的标头中包含信息
 		if (!is_req_body_started)
 		{
 			is_req_body_started = true;
@@ -234,17 +242,17 @@ esp_err_t OTA_update_post_handler(httpd_req_t *req)
 			
 			//int body_part_sta = recv_len - body_part_len;
 			//printf("OTA File Size: %d : Start Location:%d - End Location:%d\r\n", content_length, body_part_sta, body_part_len);
-			printf("OTA File Size: %d\r\n", content_length);
+			//printf("OTA File Size: %d\r\n", content_length);
 
 			esp_err_t err = esp_ota_begin(update_partition, OTA_SIZE_UNKNOWN, &ota_handle);
 			if (err != ESP_OK)
 			{
-				printf("Error With OTA Begin, Cancelling OTA\r\n");
+				//printf("Error With OTA Begin, Cancelling OTA\r\n");
 				return ESP_FAIL;
 			}
 			else
 			{
-				printf("Writing to partition subtype %d at offset 0x%x\r\n", update_partition->subtype, update_partition->address);
+				//printf("Writing to partition subtype %d at offset 0x%x\r\n", update_partition->subtype, update_partition->address);
 			}
 
 			// Lets write this first part of data out
@@ -335,6 +343,98 @@ httpd_uri_t OTA_status = {
 };
 
 
+esp_err_t HtmlToMcu_handler(httpd_req_t *req)
+{
+	char ota_buff[96];
+	int content_length = req->content_len;
+	int content_received = 0;
+	int recv_len;
+	uint8_t i;
+	do
+	{
+		/* Read the data for the request */
+		if ((recv_len = httpd_req_recv(req, ota_buff, MIN(content_length, sizeof(ota_buff)))) < 0) 
+		{
+			if (recv_len == HTTPD_SOCK_ERR_TIMEOUT) 
+			{
+				printf("Socket Timeout");
+				/* Retry receiving if timeout occurred */
+				continue;
+			}
+			printf("OTA Other Error %d", recv_len);
+			return ESP_FAIL;
+		}
+		else
+		{
+			content_received += recv_len;
+			//for(i = 0;i < content_length;i++)
+//				printf("ota_buff:%s;\r\n",ota_buff);
+			xMessageBufferSend(HtmlToMcuData,&ota_buff,content_length,portMAX_DELAY);
+		}
+	} while (recv_len > 0 && content_received < content_length);
+	return ESP_OK;
+}
+
+httpd_uri_t HtmlToMcu = {
+	.uri = "/HtmlToMcu",
+	.method = HTTP_POST,
+	.handler = HtmlToMcu_handler,
+	.user_ctx = NULL
+};
+
+uint32_t sse_id = 0x0,sse_data[sse_len] = {0};
+esp_err_t McuToHtml_handler(httpd_req_t *req)
+{
+
+	httpd_resp_set_type(req, "text/event-stream;charset=utf-8");
+
+	 /* \n是一个字符。buf_len长度要包函\n */
+	//httpd_resp_send(req, "id:1\ndata:test\n\n",16);//以data: 开头会默认触发页面中message事件，以\n\n结尾结束一次推送。
+	
+	//httpd_resp_send(req, "id:1\nevent:foo\ndata:test\n\n",26);//'event:' + 事件名 + '\n'，这样就会触发页面中的foo事件而不是message事件，以\n\n结尾结束一次推送。
+
+
+	/*转换*/
+	char ledJSON[96];
+	if(sse_id == 1){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 2){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 3){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 4){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 5){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 6){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else if(sse_id == 7){
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	else{
+		sse_id = 0;
+		sprintf(ledJSON, "id:%d\ndata:%d\n\n",sse_id,sse_data[sse_id]);
+	}
+	
+	httpd_resp_send(req, ledJSON, strlen(ledJSON));
+	sse_id++;
+
+	return ESP_OK;
+}
+
+httpd_uri_t McuToHtml = {
+	.uri = "/McuToHtml",
+	.method = HTTP_GET,
+	.handler = McuToHtml_handler,
+	.user_ctx = NULL
+};
+
 httpd_handle_t start_OTA_webserver(void)
 {
 	httpd_config_t config = HTTPD_DEFAULT_CONFIG();
@@ -358,6 +458,8 @@ httpd_handle_t start_OTA_webserver(void)
 		httpd_register_uri_handler(OTA_server, &OTA_favicon_ico);
 		httpd_register_uri_handler(OTA_server, &OTA_jquery_3_4_1_min_js);
 		httpd_register_uri_handler(OTA_server, &OTA_update);
+		httpd_register_uri_handler(OTA_server, &HtmlToMcu);
+		httpd_register_uri_handler(OTA_server, &McuToHtml);
 		httpd_register_uri_handler(OTA_server, &OTA_status);
 		return OTA_server;
 	}

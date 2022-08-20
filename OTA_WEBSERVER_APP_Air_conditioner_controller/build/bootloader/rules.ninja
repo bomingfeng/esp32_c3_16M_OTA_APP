@@ -232,7 +232,7 @@ rule C_STATIC_LIBRARY_LINKER____idf_main
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\Users\esp32-c3\.espressif\tools\cmake\3.16.4\bin\cmake.exe -SC:\ESP\esp-idf-v4.3-beta3\components\bootloader\subproject -BC:\ESP\Project\esp32_c3_16M_OTA\OTA_WEBSERVER_APP\build\bootloader
+  command = C:\Users\esp32-c3\.espressif\tools\cmake\3.16.4\bin\cmake.exe -SC:\ESP\esp-idf-v4.3-beta3\components\bootloader\subproject -BC:\ESP\Project\esp32_c3_16M_OTA\OTA_WEBSERVER_APP_Air_conditioner_controller\build\bootloader
   description = Re-running CMake...
   generator = 1
 

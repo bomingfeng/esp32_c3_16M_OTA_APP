@@ -58,12 +58,38 @@ typedef struct {
  * @brief Default configuration for IR parser
  *
  */
-#define IR_PARSER_DEFAULT_CONFIG(dev) \
+#define IR_PARSER_YB0F2_CONFIG(dev) \
     {                                 \
         .dev_hdl = dev,               \
         .flags = 0,                   \
         .margin_us = 200,             \
     }
+
+
+/**
+ * @brief Default configuration for Tx channel
+ *
+ */
+#define RMT_YB0F2_CONFIG_TX(gpio, channel_id)      \
+    {                                               \
+        .rmt_mode = RMT_MODE_TX,                     \
+        .channel = channel_id,                       \
+        .gpio_num = gpio,                            \
+        .clk_div = 80,                               \
+        .mem_block_num = 2,                          \
+        .flags = 0,                                  \
+        .tx_config = {                               \
+            .carrier_freq_hz = 38000,                \
+            .carrier_level = RMT_CARRIER_LEVEL_HIGH, \
+            .idle_level = RMT_IDLE_LEVEL_LOW,        \
+            .carrier_duty_percent = 50,              \
+            .carrier_en = false,                     \
+            .loop_en = false,                        \
+            .idle_output_en = true,                  \
+        }                                            \
+    }
+
+
 
 /**
 * @brief IR parser type
@@ -237,24 +263,32 @@ typedef struct {
  * @brief Default configuration for IR builder
  *
  */
-#define IR_BUILDER_DEFAULT_CONFIG(dev) \
+#define IR_BUILDER_YB0F2_CONFIG(dev) \
     {                                  \
         .buffer_size = 128,             \
         .dev_hdl = dev,                \
         .flags = 0,                    \
     }
+
 
 /**
- * @brief Default configuration for IR builder
+ * @brief Default configuration for RX channel
  *
  */
-#define IR_BUILDER_YKR_T_091_CONFIG(dev) \
-    {                                  \
-        .buffer_size = 128,             \
-        .dev_hdl = dev,                \
-        .flags = 0,                    \
+#define RMT_YB0F2_CONFIG_RX(gpio, channel_id) \
+    {                                           \
+        .rmt_mode = RMT_MODE_RX,                \
+        .channel = channel_id,                  \
+        .gpio_num = gpio,                       \
+        .clk_div = 80,                          \
+        .mem_block_num = 2,                     \
+        .flags = 0,                             \
+        .rx_config = {                          \
+            .idle_threshold = 21000,            \
+            .filter_ticks_thresh = 100,         \
+            .filter_en = true,                  \
+        }                                       \
     }
-
 
 /**
 * @brief Creat a NEC protocol builder

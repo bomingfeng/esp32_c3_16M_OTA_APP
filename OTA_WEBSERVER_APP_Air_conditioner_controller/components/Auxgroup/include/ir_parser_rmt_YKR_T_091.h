@@ -9,6 +9,18 @@ extern "C" {
 #include "esp_err.h"
 
 /**
+ * @brief Timings for YB0F2 protocol
+ *
+ */
+#define YKR_T_091_LEADING_CODE_HIGH_US (9000)
+#define YKR_T_091_LEADING_CODE_LOW_US (4500)
+#define YKR_T_091_PAYLOAD_ONE_HIGH_US (560)
+#define YKR_T_091_PAYLOAD_ONE_LOW_US (1690)
+#define YKR_T_091_PAYLOAD_ZERO_HIGH_US (560)
+#define YKR_T_091_PAYLOAD_ZERO_LOW_US (560)
+#define YKR_T_091_ENDING_CODE_HIGH_US (560)
+
+/**
 * @brief IR device type
 *
 */
@@ -38,7 +50,7 @@ typedef struct {
  * @brief Default configuration for IR parser
  *
  */
-#define IR_PARSER_DEFAULT_CONFIG(dev) \
+#define IR_PARSER_YKR_T_091_CONFIG(dev) \
     {                                 \
         .dev_hdl = dev,               \
         .flags = 0,                   \
@@ -217,14 +229,55 @@ typedef struct {
  * @brief Default configuration for IR builder
  *
  */
-#define IR_BUILDER_DEFAULT_CONFIG(dev) \
+#define IR_BUILDER_YKR_T_091_CONFIG(dev) \
     {                                  \
         .buffer_size = 128,             \
         .dev_hdl = dev,                \
         .flags = 0,                    \
     }
 
+/**
+ * @brief Default configuration for Tx channel
+ *
+ */
+#define RMT_YKR_T_091_CONFIG_TX(gpio, channel_id)      \
+    {                                               \
+        .rmt_mode = RMT_MODE_TX,                     \
+        .channel = channel_id,                       \
+        .gpio_num = gpio,                            \
+        .clk_div = 80,                               \
+        .mem_block_num = 2,                          \
+        .flags = 0,                                  \
+        .tx_config = {                               \
+            .carrier_freq_hz = 38000,                \
+            .carrier_level = RMT_CARRIER_LEVEL_HIGH, \
+            .idle_level = RMT_IDLE_LEVEL_LOW,        \
+            .carrier_duty_percent = 50,              \
+            .carrier_en = false,                     \
+            .loop_en = false,                        \
+            .idle_output_en = true,                  \
+        }                                            \
+    }
 
+
+/**
+ * @brief Default configuration for RX channel
+ *
+ */
+#define RMT_YKR_T_091_CONFIG_RX(gpio, channel_id) \
+    {                                           \
+        .rmt_mode = RMT_MODE_RX,                \
+        .channel = channel_id,                  \
+        .gpio_num = gpio,                       \
+        .clk_div = 80,                          \
+        .mem_block_num = 2,                     \
+        .flags = 0,                             \
+        .rx_config = {                          \
+            .idle_threshold = 10000,            \
+            .filter_ticks_thresh = 100,         \
+            .filter_en = true,                  \
+        }                                       \
+    }
 /**
 * @brief Creat a NEC protocol builder
 *

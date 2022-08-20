@@ -689,7 +689,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=107
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=106
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -733,7 +733,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Git
 FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[C:/Program Files/Git/cmd/git.exe][v2.31.1.windows.1()]
 //Details about finding Perl
-FIND_PACKAGE_MESSAGE_DETAILS_Perl:INTERNAL=[C:/TB/tc32_WIN/bin/perl.exe][v5.22.2()]
+FIND_PACKAGE_MESSAGE_DETAILS_Perl:INTERNAL=[C:/TB/tc32_WIN/bin/perl.exe][v()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[C:/Users/esp32-c3/.espressif/python_env/idf4.3_py3.9_env/Scripts/python.exe][v3.9.5()]
 //ADVANCED property for variable: GIT_EXECUTABLE

@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "C:/ESP/esp-idf-v4.3-beta3/components/bootloader/subproject",
-    "build_dir":          "C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/build/bootloader",
-    "config_file":        "C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/sdkconfig",
+    "build_dir":          "C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/build/bootloader",
+    "config_file":        "C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/sdkconfig",
     "config_defaults":    "",
     "app_elf":            "bootloader.elf",
     "app_bin":            "bootloader.bin",

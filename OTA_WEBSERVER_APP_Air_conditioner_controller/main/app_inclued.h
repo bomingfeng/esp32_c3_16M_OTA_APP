@@ -27,16 +27,23 @@
 #include "freertos/task.h"
 #include "driver/rmt.h"
 #include "ds18x20.h"
-#include "driver/temp_sensor.h"
+#include "driver/rtc_io.h"
 #include "esp_sntp.h"
 #include "esp_sleep.h"
 #include "freertos/timers.h"
 #include "freertos/event_groups.h"
 #include "freertos/event_groups.h"
-#include "ESP32_C3_SOC_Temp_Task.h"
 #include "tcp_client.h"
 #include "ds18b20_task.h"
 #include "ir_rx_task.h"
+#include "math.h"
+#include "driver/timer.h"
+#include "driver/ledc.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
+#include "freertos/queue.h"
+#include "bt_hci_common.h"
+
 
 //#define Gree    
 #define Auxgroup 
@@ -61,13 +68,26 @@
 #define IR_PARSER_CONFIG(dev) IR_PARSER_YKR_T_091_CONFIG(dev)
 #endif
 
+#define LYWSD03MMC    
+//#define XL0801
+
 #define GATTC_TAG "LYWSD03MMC"
 #define Sp 18 //温度上、下限
 #define Lp 15
 #define LLp 25
-#define load_time 30 //多久控制空调
+
+#ifdef XL0801
+#define load_time 1 //多久控制空调
+#else
+#define load_time 1//多久控制空调
+#endif
+
 #define sleep_time 5  //休眠时间min
 #define time_off 500 //默认定时关空调时间MIN
+#define BLe_battery_low 1810 //2110
+#define BLe_battery_High 2320
+
+#define sse_len 9
 
 extern EventGroupHandle_t APP_event_group;
 #define APP_event_REBOOT_BIT BIT0   // =1 重起
@@ -85,6 +105,10 @@ extern EventGroupHandle_t APP_event_group;
 #define APP_event_SP_flags_BIT BIT11 // =1 
 #define APP_event_LP_flags_BIT BIT12 // =1
 #define APP_event_LLP_flags_BIT BIT13 // =1
+
+#define APP_event_IR_LED_flags_BIT BIT14 // =1 接收到IR数据正确
+#define APP_event_BLE_CONNECTED_flags_BIT BIT15 // =1 接收到ble数据正确
+#define APP_event_ds18b20_CONNECTED_flags_BIT BIT16 // =1 接收到ds18b20数据正确
 
 extern RTC_DATA_ATTR uint32_t sleep_keep;
 #define sleep_keep_WIFI_AP_OR_STA_BIT BIT0

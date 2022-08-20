@@ -1,4 +1,4 @@
-# Install script for directory: C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/components/Auxgroup
+# Install script for directory: C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/components/Auxgroup
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

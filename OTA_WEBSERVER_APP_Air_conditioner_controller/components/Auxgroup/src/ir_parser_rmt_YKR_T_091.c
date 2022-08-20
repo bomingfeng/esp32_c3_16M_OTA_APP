@@ -164,7 +164,7 @@ uint8_t reverse_8bit(uint8_t num)
 	return new_num;
 }
 
-static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *data1, uint32_t *data2, uint32_t *data3,uint32_t *data4)
+static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *parserdata1,uint32_t *parserdata2,uint32_t *parserdata3,uint32_t *parserdata4)
 {
     esp_err_t ret = ESP_FAIL;
     uint32_t addr = 0;
@@ -182,7 +182,7 @@ static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *d
                     addr |= logic_value;
                 }
             }
-            *data1 = addr;
+            *parserdata1 = addr;
             
             addr = 0;
             for (int i = 0; i < 32; i++) 
@@ -193,7 +193,7 @@ static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *d
                     addr |= logic_value;
                 }
             }
-            *data2 = addr;
+            *parserdata2 = addr;
 
             addr = 0;
             for (int i = 0; i < 32; i++) 
@@ -204,7 +204,7 @@ static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *d
                     addr |= logic_value;
                 }
             }
-            *data3 = addr;
+            *parserdata3 = addr;
 
             addr = 0;
             for (int i = 0; i < 32; i++) 
@@ -215,7 +215,7 @@ static esp_err_t YKR_T_091_parser_get_scan_code(ir_parser_t *parser, uint32_t *d
                     addr |= logic_value;
                 }
             }
-            *data4 = addr;
+            *parserdata4 = addr;
             
             YKR_T_091_parser->cursor += 1;
             ret = ESP_OK;

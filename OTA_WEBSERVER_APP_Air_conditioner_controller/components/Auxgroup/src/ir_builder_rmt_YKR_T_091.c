@@ -18,17 +18,7 @@
 
 
 
-/**
- * @brief Timings for YB0F2 protocol
- *
- */
-#define YKR_T_091_LEADING_CODE_HIGH_US (9000)
-#define YKR_T_091_LEADING_CODE_LOW_US (4500)
-#define YKR_T_091_PAYLOAD_ONE_HIGH_US (560)
-#define YKR_T_091_PAYLOAD_ONE_LOW_US (1690)
-#define YKR_T_091_PAYLOAD_ZERO_HIGH_US (560)
-#define YKR_T_091_PAYLOAD_ZERO_LOW_US (560)
-#define YKR_T_091_ENDING_CODE_HIGH_US (560)
+
 
 
 //static const char *TAG = "YKR_T_091_builder";

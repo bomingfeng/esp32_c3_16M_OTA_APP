@@ -18,7 +18,7 @@ set(HEAD_HASH)
 file(READ "C:/ESP/Project/esp32_c3_16M_OTA/ESP32-C3-OTA-Webserver/build/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
-set(GIT_DIR "C:/ESP/esp-idf-v4.3-beta3/.git")
+set(GIT_DIR "C:/ESP/Project/esp32_c3_16M_OTA/.git")
 # handle git-worktree
 if(EXISTS "${GIT_DIR}/commondir")
 	file(READ "${GIT_DIR}/commondir" GIT_DIR_NEW LIMIT 1024)

@@ -1502,25 +1502,6 @@ rule C_STATIC_LIBRARY_LINKER____idf_freemodbus
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER____idf_hd44780
-  depfile = $DEP_FILE
-  deps = gcc
-  command = ccache C:\Users\esp32-c3\.espressif\tools\riscv32-esp-elf\1.24.0.123_64eb9ff-8.4.0\riscv32-esp-elf\bin\riscv32-esp-elf-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
-  description = Building C object $out
-
-
-#############################################
-# Rule for linking C static library.
-
-rule C_STATIC_LIBRARY_LINKER____idf_hd44780
-  command = cmd.exe /C "$PRE_LINK && C:\Users\esp32-c3\.espressif\tools\cmake\3.16.4\bin\cmake.exe -E remove $TARGET_FILE && C:\Users\esp32-c3\.espressif\tools\riscv32-esp-elf\1.24.0.123_64eb9ff-8.4.0\riscv32-esp-elf\bin\riscv32-esp-elf-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\Users\esp32-c3\.espressif\tools\riscv32-esp-elf\1.24.0.123_64eb9ff-8.4.0\riscv32-esp-elf\bin\riscv32-esp-elf-ranlib.exe $TARGET_FILE && $POST_BUILD"
-  description = Linking C static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
-# Rule for compiling C files.
-
 rule C_COMPILER____idf_hmc5883l
   depfile = $DEP_FILE
   deps = gcc

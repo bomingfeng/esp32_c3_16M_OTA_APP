@@ -1,0 +1,49 @@
+https://www.cnblogs.com/IT-Evan/p/15208070.html
+<script>
+
+var es = new EventSource("/McuToHtml");
+
+//当连接上之后就会立即触发；
+es .addEventListener('open',function(){
+console.info('open');
+},false);
+
+//服务器向客户端发送数据的默认事件，通过e.data可以获取到数据；
+es .addEventListener('message',function(e){
+console.info('message',e.data);
+},false);
+
+//自定义事件（SSE支持自定义事件）；
+es .addEventListener('foo',function(e){
+console.info('foo',e.data);
+},false);
+
+//当链接发生错误时触发。
+es .addEventListener('error',function(){
+console.info('error');
+},false);
+
+</script>
+
+
+esp32 
+
+esp_err_t McuToHtml_handler(httpd_req_t *req)
+{
+	httpd_resp_set_type(req, "text/event-stream;charset=utf-8");
+
+	 /* \n是一个字符。buf_len长度要包函\n */
+	httpd_resp_send(req, "data:test\n\n",11);//以data: 开头会默认触发页面中message事件，以\n\n结尾结束一次推送。
+
+	httpd_resp_send(req, "event:foo\ndata:test\n\n",21);//'event:' + 事件名 + '\n'，这样就会触发页面中的foo事件而不是message事件，以\n\n结尾结束一次推送。
+
+	return ESP_OK;
+}
+
+
+httpd_uri_t McuToHtml = {
+	.uri = "/McuToHtml",
+	.method = HTTP_GET,
+	.handler = McuToHtml_handler,
+	.user_ctx = NULL
+};

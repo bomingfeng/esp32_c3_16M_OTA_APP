@@ -1,36 +1,239 @@
-﻿<!DOCTYPE html>
-<html>
+﻿﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
 
 <head>
     <meta charset="UTF-8">
     <title>ESP32 OTA</title>
+
+    <!-- 用于移动端显示优化的。width              设置layout viewport的宽度，为一个正整数，或字符串"width-device"
+                             initial-scale      设置页面的初始缩放值，为一个数字，可以带小数
+                             minimum-scale	    允许用户的最小缩放值，为一个数字，可以带小数
+                             maximum-scale	    允许用户的最大缩放值，为一个数字，可以带小数
+                             height	            设置layout viewport的高度，这个属性对我们并不重要，很少使用
+                             user-scalable	    是否允许用户进行缩放，值为 "no" 或 "yes", no 代表不允许，yes 代表允许 -->
     <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+    <!-- 每30秒刷新页面： -->
+    <meta http-equiv="refresh" content="300">
+
+    <!-- <script> 标签用于定义客户端脚本，比如 JavaScript。
+         <script> 元素既可包含脚本语句，也可以通过 "src" 属性指向外部脚本文件 -->
     <script src="jquery-3.4.1.min.js"></script>
 
 </head>
 
-<<body onload="getstatus()">
+<!-- onload 事件在页面载入完成后立即触发。getstatus()在下面定义 -->
+<body onload="getstatus()">
 
-    <h2>ESP32 Firmware Update Page</h2>
+    <!-- 标题标签 -->
+    <h3>ESP32 调试参数显示</h3>
+
+     
+    <h4 id="data_time"></h4>
+
+    <label class="ac" id="AC_timer"></label>
+    
+    <label class="ac">空调定时关机</label>
+    <input class="ac" type="number" name="AC_time" id="AC_time" required>
+    <label class="ac">min</label>
+    <input class="ac" type="button" id="AC_time_config" value="定时关机">
+
+    <input class="ac" type="time" name="AC_hhmm" id="AC_hhmm" required>
+    <input class="ac" type="button" id="AC_hhmm_config" value="关机时间">
+
+    <br>
+    <label id="ADC"></label>
+    <label for="adc_number">ADC亮度值</label>
+    <input type="number" name="adc_number" id="adc_number" required>
+    <input type="button" id="adc_config" value="ADC_SET">
+    
+    <hr color="red"/>
+    
+    <!-- 标题标签 -->
+    <h3>ESP32 Firmware Update Page</h3>
+
+    <!-- 标题标签 id选择器 -->
     <h4 id="latest_firmware"></h4>
 
+    <!-- input标签 输入类型：文件 id选择器 文件类型 jquery控件不显示 事件会在域的内容改变时发生；事件也可用于单选框与复选框改变后触发的事件。 -->
+    <!-- none = 隐藏; inline = 显示 -->
     <input type="file" id="selectedFile" accept=".bin" style="display: none;" onchange="myFunction()" />
+    
     <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
-    <h3 id="file_info"></h3>
+
+    <h4 id="file_info"></h4>
+    <h4 id="test"></h4>
     <input type='submit' id="upload_button" value='Update Firmware' onclick="updateFirmware()">
+
+    <!-- 
+    <input type='submit' value='HtmlToMcusu' onclick="HtmlToMcu()">
+    <input type="button" value="HtmlToMcu" onclick="HtmlToMcu()" />
+     -->
 
     <h4 id="status"></h4>
     <h4 id="status1"></h4>
 
+    <hr color="red"/>
+
+    <h3>WiFi configuration page</h3>
+    <h4>WiFi credentials</h4>
+
+    <div>
+        <label for="ssid_text">SSID</label>
+        <input type="text" name="ssid_text" id="ssid_text" required>
+        <label for="pass_text">Password</label>
+        <input type="text" name="pass_text" id="pass_text" minlength="8" required>
+        <input type="button" id="set_config" value="SET">
+    </div>
+
+
     <script type="text/javascript">
         var seconds = 10;
         var theTimer;
+        var date;
+        var date1;
+        var degC_ble;
+        var humidity_ble;
+        var adc_data;
+        var degC_18b20;
+        var AC_run_status;
+        var Voltage_ble;
+        var IR_temp;
+        var ac_data;
+        var ac_hhmm;
+
+        var es = new EventSource("/McuToHtml");
+
+        //当连接上之后就会立即触发；
+        /*es.addEventListener('open',function(){
+            test++;
+            console.log("open" + test);
+        },false);
+        */
+        //服务器向客户端发送数据的默认事件，通过e.data可以获取到数据；
+        es.addEventListener('message',function(e){
+            console.log("message:" + e.data);
+            console.log("id:" + e.lastEventId);
+
+            if(e.lastEventId == 1){
+                degC_ble = e.data;
+                degC_ble = (degC_ble  >> 16) / 100;
+                degC_ble = degC_ble.toFixed(2);
+                humidity_ble = e.data;
+                humidity_ble = (humidity_ble & 0xFFFF) / 100;
+                humidity_ble = humidity_ble.toFixed(2);
+            }
+            else if(e.lastEventId == 2){
+                adc_data = e.data;
+            }
+            else if(e.lastEventId == 3){
+                degC_18b20 = e.data;
+            }
+            else if(e.lastEventId == 4){
+                AC_run_status = e.data;
+            }
+            else if(e.lastEventId == 5){
+                Voltage_ble = e.data;
+            }
+            else if(e.lastEventId == 6){
+                IR_temp = e.data;
+                IR_temp = IR_temp / 100;
+                IR_temp = IR_temp.toFixed(2);
+            }
+            else if(e.lastEventId == 7){
+                ac_data = e.data;
+            }
+            else if(e.lastEventId == 8){
+                ac_hhmm = e.data;
+            }
+            else{
+                date1 = e.data;
+            }
+
+            date = new Date(date1 * 1000);  // 参数需要毫秒数，所以这里将秒数乘于 1000
+            //((e.data & 0xFFFFFFFF00000000) >> 16)
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            D = date.getDate();
+            h = date.getHours() + ':';
+            m = (date.getMinutes()  < 10 ?  '0'+(date.getMinutes()) : date.getMinutes());
+            s = ':' + (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+
+            document.getElementById("data_time").innerHTML = "日期时间:" + Y + M + D + "&emsp;" + h + m;
+
+            if(Voltage_ble & 0x80000000){
+                var Voltage_ble1 = Voltage_ble & 0x7FFFFFFF;
+                document.getElementById("data_time").innerHTML += "<br><span style='background:green;'>蓝牙表</span>温度:" + degC_ble + "&emsp;湿度:" + humidity_ble + "&#37;&emsp;电压:" + Voltage_ble1 + "mV";
+            }
+            else{
+                document.getElementById("data_time").innerHTML += "<br><span style='background:red;'>蓝牙表</span>";
+            }
+            
+            
+
+            if(degC_18b20 & 0x80000000){
+                var degC_18b201 = degC_18b20 & 0x7FFFFFFF; 
+                degC_18b201 = degC_18b201 / 100;
+                degC_18b201 = degC_18b201.toFixed(2);//"<span style='background:green;'>1级(LP))升温中</span>"
+                document.getElementById("data_time").innerHTML += "<br>DS18B20温度:<span style='background:green;'>" + degC_18b201 + "</span>";
+            }
+            else{
+                document.getElementById("data_time").innerHTML += "<br><span style='background:red;'>DS18B20温度:</span>";
+            }
+
+            if(AC_run_status & 0x01){
+                document.getElementById("data_time").innerHTML += "<br>空调状态:设定温度:"  + IR_temp + "&emsp;<span style='background:green;'>开机</span>&emsp;";
+            }
+            else{
+                document.getElementById("data_time").innerHTML += "<br>空调状态:设定温度:" + IR_temp + "&emsp;<span style='background:red;'>关机</span>";
+            }
+            if(AC_run_status & 0x02){
+                document.getElementById("data_time").innerHTML += "<span style='background:green;'>制冷中</span>";
+            }
+            if(AC_run_status & 0x04){
+                document.getElementById("data_time").innerHTML += "<span style='background:green;'>1级(LP))升温中</span>&emsp;";
+            }
+            if(AC_run_status & 0x08){
+                document.getElementById("data_time").innerHTML += "<span style='background:green;'>2级(LLP)升温中</span>";
+            }
+            document.getElementById("ADC").innerHTML = "ADC亮度值:" + adc_data + "&emsp;&emsp;";
+            document.getElementById("AC_timer").innerHTML = "空调定时关机:" + ac_data + "&nbsp;min&emsp;关空调时间：" + ac_hhmm + "&emsp;";
+            if((AC_run_status & 0x01) == 0){
+                document.getElementsByClassName("ac")[0].style.display="none";
+                document.getElementsByClassName("ac")[1].style.display="none";
+                document.getElementsByClassName("ac")[2].style.display="none";
+                document.getElementsByClassName("ac")[3].style.display="none";
+                document.getElementsByClassName("ac")[4].style.display="none";
+                document.getElementsByClassName("ac")[5].style.display="none";
+                document.getElementsByClassName("ac")[6].style.display="none";
+            }
+        },false);
+
+        //自定义事件（SSE支持自定义事件）；
+        es.addEventListener('foo',function(e){
+            console.log("foo:" + e.data);
+        },false);
+
+        //当链接发生错误时触发。
+        /*es.addEventListener('error',function(){
+        console.info('error');
+        },false);*/
+
 
         function myFunction() {
+
             var x = document.getElementById("selectedFile");
             var file = x.files[0];
 
-            document.getElementById("file_info").innerHTML = "<h4>File: " + file.name + "<br>" + "Size: " + file.size + " bytes</h4>";
+            date = new Date(file.lastModified);  // 
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            D = date.getDate();
+            h = date.getHours() + ':';
+            m = (date.getMinutes()  < 10 ?  '0'+(date.getMinutes()) : date.getMinutes()) + ':';
+            s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+
+            document.getElementById("file_info").innerHTML = "File: " + file.name + "<br>" + "Size: " + file.size + "bytes" + "<br>" + "Latest Modified Date:" + Y + M + D + "&emsp;" + h + m + s;
         }
 
         function updateFirmware() {
@@ -74,7 +277,7 @@
                 window.alert('Select A File First')
             }
         }
-
+        
         // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send
         function getstatus() {
 
@@ -83,10 +286,32 @@
             xhr.open('POST', requestURL, true);
 
             //Send the proper header information along with the request
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//设置为表单方式提交
 
-            xhr.onreadystatechange = function() { // Call a function when the state changes.
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            xhr.onreadystatechange = function() { // Call a function when the state changes.在状态更改时调用函数。//绑定响应状态事件监听函数
+                if ((this.readyState == XMLHttpRequest.DONE) && (this.status == 200)) //监听readyState状态,监听HTTP状态码
+                {
+                    
+                    /* readyState属性值 
+                        返回值 说明
+                        0	  未初始化。表示对象已经建立，但是尚未初始化，尚未调用 open() 方法
+                        1	  初始化。表示对象已经建立，尚未调用 send() 方法
+                        2	  发送数据。表示 send() 方法已经调用，但是当前的状态及 HTTP 头未知
+                        3	  数据传送中。已经接收部分数据，因为响应及 HTTP 头不安全，这时通过 responseBody 和 responseText 获取部分数据会出现错误
+                        4	  完成。= XMLHttpRequest.DONE 数据接收完毕，此时可以通过 responseBody 和 responseText 获取完整的响应数据  
+                        
+                        readyState	存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                                    0: 请求未初始化
+                                    1: 服务器连接已建立
+                                    2: 请求已接收
+                                    3: 请求处理中
+                                    4: 请求已完成，且响应已就绪
+                        
+                        status	200: "OK"
+                                404: 未找到页面
+                    */
+                    
                     var response = JSON.parse(xhr.responseText);
 
                     document.getElementById("latest_firmware").innerHTML = "Latest Firmware:  " + response.compile_date + " - " + response.compile_time
@@ -113,10 +338,11 @@
                     }
                 }
             }
+            
 
             console.log("Requestiing Upgrade Status");
 
-            xhr.send('status');
+            xhr.send('status');                    
         }
 
         function startMyTimer() {
@@ -130,7 +356,67 @@
                 document.getElementById("status").innerHTML = "Upgrade Complete, Rebooting in " + seconds + " Seconds.";
             }
         }
+
+        function HtmlToMcu(data) {
+            var xhr = new XMLHttpRequest();
+            var requestURL = "/HtmlToMcu";
+            xhr.open('POST', requestURL, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");//设置为表单方式提交
+            xhr.responseType = "text";
+            xhr.send(data);
+            
+        }    
+
+        $(document).ready(function() {
+            $("#set_config").click(function() {
+                if(ssid_text.value != '')
+                {
+                    HtmlToMcu("ssid:" + ssid_text.value + "pass:" + pass_text.value);
+                    console.log("ssid:" + ssid_text.value + "pass:" + pass_text.value);
+                } 
+                else 
+                {
+                    var errorText = ''
+                    if(ssid_text.value == '') {
+                        errorText = 'Missing SSID\n';
+                    }
+                    alert(errorText);
+                }
+            });
+
+            $("#adc_config").click(function() {
+                if(adc_number.value != '')
+                {
+                    HtmlToMcu("adc:" + adc_number.value);
+                    console.log("adc:" + adc_number.value);
+                } 
+            });
+
+            $("#AC_time_config").click(function() {
+                if(AC_time.value != '')
+                {
+                    HtmlToMcu("ac_time:" + AC_time.value);
+                    ac_data = AC_time.value;
+                    console.log("ac_time:" + AC_time.value);
+                    ac_hhmm = '';
+                    AC_hhmm.value = '';
+                } 
+            });
+
+            $("#AC_hhmm_config").click(function() {
+                if(AC_hhmm.value != '')
+                {
+                    HtmlToMcu("ac_hhmm:" + AC_hhmm.value);
+                    ac_hhmm = AC_hhmm.value;
+                    console.log("ac_hhmm:" + AC_hhmm.value);
+                    AC_time.value = '';
+                    ac_data = '';
+                } 
+            });
+        });
+
     </script>
+
     </body>
 
 </html>

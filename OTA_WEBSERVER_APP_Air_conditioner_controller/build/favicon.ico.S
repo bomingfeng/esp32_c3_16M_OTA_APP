@@ -1,4 +1,4 @@
-/* * Data converted from C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP/main/WebsiteFiles/favicon.ico
+/* * Data converted from C:/ESP/Project/esp32_c3_16M_OTA/OTA_WEBSERVER_APP_Air_conditioner_controller/main/WebsiteFiles/favicon.ico
  * (null byte appended)
  */
 .data
