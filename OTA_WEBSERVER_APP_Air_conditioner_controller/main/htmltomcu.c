@@ -66,7 +66,7 @@ void htmltomcudata_task(void * arg)
             first_len = second_bit - (first_bit + 5);
             second_len = data_len - (second_bit + 5);
             //printf("first_len:%d;second_len:%d;\r\n",first_len,second_len);
-            if(first_len > 0){
+            if((first_len > 0) && (second_len > 7)){
                 memset(ssid,'\0',sizeof(ssid));
                 for(i = 0;i < first_len;i++){
                     ssid[i] = data[first_bit + i + 5];
@@ -96,13 +96,17 @@ void htmltomcudata_task(void * arg)
                 }   
 
                 // Write
-                printf("Updating restart counter in NVS ... ");
+                printf("Updating restart counter in NVS ... \n");
                 
-               
+                
+
                 err=nvs_set_str(my_handle,"wifissid",ssid);
                 printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
 
                 err=nvs_set_str(my_handle,"wifipass",password);
+                printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
+
+                err=nvs_set_i8(my_handle,"wifi_mode",WIFI_MODE_STA);
                 printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
 
                 // Commit written value.

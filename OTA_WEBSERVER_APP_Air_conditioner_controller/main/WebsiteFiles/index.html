@@ -73,17 +73,17 @@
     <h4 id="status"></h4>
     <h4 id="status1"></h4>
 
-    <hr color="red"/>
+    <hr class="wifi_ap" color="red"/>
 
-    <h3>WiFi configuration page</h3>
-    <h4>WiFi credentials</h4>
+    <h3 class="wifi_ap">WiFi configuration page</h3>
+    <h4 class="wifi_ap">WiFi credentials</h4>
 
-    <div>
-        <label for="ssid_text">SSID</label>
-        <input type="text" name="ssid_text" id="ssid_text" required>
-        <label for="pass_text">Password</label>
-        <input type="text" name="pass_text" id="pass_text" minlength="8" required>
-        <input type="button" id="set_config" value="SET">
+    <div class="wifi_ap">
+        <label class="wifi_ap" for="ssid_text">SSID</label>
+        <input class="wifi_ap" type="text" name="ssid_text" id="ssid_text" required>
+        <label class="wifi_ap" for="pass_text">Password</label>
+        <input class="wifi_ap" type="text" name="pass_text" id="pass_text" minlength="8" required>
+        <input class="wifi_ap" type="button" id="set_config" value="SET">
     </div>
 
 
@@ -206,6 +206,28 @@
                 document.getElementsByClassName("ac")[4].style.display="none";
                 document.getElementsByClassName("ac")[5].style.display="none";
                 document.getElementsByClassName("ac")[6].style.display="none";
+            }
+            if((AC_run_status & 0x10) == 0){
+                document.getElementsByClassName("wifi_ap")[0].style.display="none";
+                document.getElementsByClassName("wifi_ap")[1].style.display="none";
+                document.getElementsByClassName("wifi_ap")[2].style.display="none";
+                document.getElementsByClassName("wifi_ap")[3].style.display="none";
+                document.getElementsByClassName("wifi_ap")[4].style.display="none";
+                document.getElementsByClassName("wifi_ap")[5].style.display="none";
+                document.getElementsByClassName("wifi_ap")[6].style.display="none";
+                document.getElementsByClassName("wifi_ap")[7].style.display="none";
+                document.getElementsByClassName("wifi_ap")[8].style.display="none";
+            }
+            else{
+                document.getElementsByClassName("wifi_ap")[0].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[1].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[2].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[3].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[4].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[5].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[6].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[7].style.display="inline";
+                document.getElementsByClassName("wifi_ap")[8].style.display="inline";
             }
         },false);
 
@@ -371,7 +393,12 @@
             $("#set_config").click(function() {
                 if(ssid_text.value != '')
                 {
-                    HtmlToMcu("ssid:" + ssid_text.value + "pass:" + pass_text.value);
+                    if(pass_text.value.length > 7){
+                        HtmlToMcu("ssid:" + ssid_text.value + "pass:" + pass_text.value);
+                    }
+                    else{
+                        alert('SSID空或Password少于8位\n');
+                    }
                     console.log("ssid:" + ssid_text.value + "pass:" + pass_text.value);
                 } 
                 else 

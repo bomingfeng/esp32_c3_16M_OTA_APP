@@ -181,11 +181,12 @@ void app_main()
     xTaskCreate(systemRebootTask, "rebootTask", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
     LED_Task_init();
-    xTaskCreate(led_instructions, "led_instructions", 4596, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    xTaskCreate(led_instructions, "led_instructions", 4096, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
-	MyWiFi_init();
-    xTaskCreate(wifi_ap_sta, "wifi_ap_sta", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
-   
+	//MyWiFi_init();
+    //xTaskCreate(wifi_ap_sta, "wifi_ap_sta", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    xTaskCreate(vTaskWifiHandler, "vTaskWifiHandler", 9216, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+
     xTaskCreate(ds18x20_task,      "ds18x20",3072, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
     ir_rx_task_init();
@@ -202,7 +203,7 @@ void app_main()
     
     xTaskCreate(htmltomcudata_task, "htmltomcudata", 4096, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
     
-    xTaskCreate(LED_Seg7Menu_Task, "LED_Seg7Menu", 4096, NULL, ESP_TASK_PRIO_MIN + 1, NULL);//????
+    //xTaskCreate(LED_Seg7Menu_Task, "LED_Seg7Menu", 4096, NULL, ESP_TASK_PRIO_MIN + 1, NULL);//????
     
 /*   释放BT mode模式，释放内存   */
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT));
@@ -223,9 +224,9 @@ void app_main()
 
     
 
-    xTaskCreate(MultiButton_poll_Task, "Button_poll_Task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    //xTaskCreate(MultiButton_poll_Task, "Button_poll_Task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
     xTaskCreate(sntp_task, "sntp_task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
-    xTaskCreate(ADC1_single_read_Task, "ADC1", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    //xTaskCreate(ADC1_single_read_Task, "ADC1", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
 #ifdef  XL0801
     extern void ble_adv_scan_Task(void * arg);
