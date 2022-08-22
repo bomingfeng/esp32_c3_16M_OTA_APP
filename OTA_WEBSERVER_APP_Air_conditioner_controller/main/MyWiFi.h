@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "esp_wifi.h"
 
 #define AP_SSID_HIDDEN 0
 #define AP_MAX_CONNECTIONS 1
@@ -18,4 +18,4 @@ void print_sta_info(void *pvParam);
 void wifi_ap_sta(void *pvParam);
 void MyWiFi_init(void);
 void vTaskWifiHandler( void * pvParameters);
-
+void WIFI_Mode_Save(wifi_mode_t WifiMode);

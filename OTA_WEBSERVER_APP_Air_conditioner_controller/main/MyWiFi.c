@@ -3,7 +3,6 @@
 #include <string.h>
 #include "esp_log.h"
 #include "esp_err.h"
-#include "esp_wifi.h"
 #include "esp_http_server.h"
 #include "esp_event.h"
 #include "freertos/event_groups.h"
@@ -521,7 +520,7 @@ void wifi_ap_sta(void *pvParam)
 #if 1
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-static void WIFI_Mode_Save(wifi_mode_t WifiMode)
+void WIFI_Mode_Save(wifi_mode_t WifiMode)
 {
 	// Open
 	printf("\n");
