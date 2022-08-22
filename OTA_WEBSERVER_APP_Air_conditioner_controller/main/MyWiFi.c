@@ -49,6 +49,7 @@ void MyWiFi_init(void)
 	//printf("Welcome to esp32-c3 STA.\r\n");
 }
 
+static int webserver_status = 0x55;
 static void ip_event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
@@ -64,7 +65,10 @@ static void ip_event_handler(void* arg, esp_event_base_t event_base,
 			xEventGroupSetBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);	
 			xEventGroupClearBits(APP_event_group, APP_event_WIFI_AP_CONNECTED_BIT);
 			/* Start the web server */
-			start_OTA_webserver();
+			if(webserver_status == 0x55){
+				start_OTA_webserver();
+				webserver_status = 0xaa;
+			}
 			break;
 		}
 		case IP_EVENT_STA_LOST_IP: {
@@ -171,7 +175,10 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
 			xEventGroupSetBits(APP_event_group, APP_event_WIFI_AP_CONNECTED_BIT);
 			xEventGroupClearBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);
 			/* Start the web server */
-			start_OTA_webserver();
+			if(webserver_status == 0){
+				start_OTA_webserver();
+				webserver_status = 1;
+			}
 			break;
 		}
 		case WIFI_EVENT_AP_STADISCONNECTED: {
@@ -817,6 +824,7 @@ void vTaskWifiHandler( void * pvParameters )
 				WIFI_Mode_Save(enWifiMode);
 				ESP_LOGI("test", "WIFI_MODE_AP4.");
 				stop_OTA_webserver(OTA_server);
+				webserver_status = 0x55;
 				ESP_LOGI("test", "WIFI_MODE_AP1.");
 				//esp_wifi_disconnect();
 				ESP_LOGI("test", "WIFI_MODE_AP2.");
@@ -852,6 +860,7 @@ void vTaskWifiHandler( void * pvParameters )
             if(enWifiMode == WIFI_MODE_STA)
             {
 				stop_OTA_webserver(OTA_server);
+				webserver_status = 0x55;
 				//esp_wifi_disconnect();
 				// stop DHCP server
 				ESP_ERROR_CHECK(tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP));
