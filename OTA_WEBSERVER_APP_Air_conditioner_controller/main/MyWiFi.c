@@ -804,17 +804,18 @@ void vTaskWifiHandler( void * pvParameters )
         default:
         break;
     }
-	
-	//ESP_LOGI(TAG, "Main task: waiting for connection to the wifi network... ");
-	
-	
-
     for(;;)
 	{
-		
         if(enWifiMode == WIFI_MODE_STA)
         {
             sse_data[4] &= ~BIT4;
+
+
+			vTaskDelay(60000 / portTICK_PERIOD_MS);
+			xEventGroupSetBits(APP_event_group,APP_event_WIFI_AP_CONNECTED_BIT);
+			xEventGroupClearBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);
+
+
             // wait for connection or disconnect event
             bits = xEventGroupWaitBits(APP_event_group, APP_event_WIFI_AP_CONNECTED_BIT, pdFALSE, pdFALSE, (100 / portTICK_PERIOD_MS));
             ESP_LOGI("test", "WIFI_MODE_AP0.");
@@ -833,12 +834,8 @@ void vTaskWifiHandler( void * pvParameters )
                 //ESP_LOGI(TAG, "Connection lost! Stopping Wifi to switch to AccessPoint Mode.");
                 ESP_ERROR_CHECK(esp_wifi_stop());
 				ESP_LOGI("test", "WIFI_MODE_AP3.");
-
-				vTaskDelay(100 / portTICK_PERIOD_MS);
-				//esp_netif_destroy(my_netif);
 				ESP_LOGI("test", "WIFI_MODE_AP6.");
-				vTaskDelay(100 / portTICK_PERIOD_MS);
-				//my_netif = esp_netif_create_default_wifi_ap();
+				vTaskDelay(200 / portTICK_PERIOD_MS);
 				ESP_LOGI("test", "WIFI_MODE_AP7.");
                 ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
 				ESP_LOGI("test", "WIFI_MODE_AP8.");
@@ -850,27 +847,30 @@ void vTaskWifiHandler( void * pvParameters )
             else 
             {
                 ESP_LOGI("MyWiFi","enWifiMode == WIFI_MODE_STA\r\n");
+				vTaskDelay(60000 / portTICK_PERIOD_MS);
+        		WIFI_Mode_Save(WIFI_MODE_STA);
             }
         }
         else if(enWifiMode == WIFI_MODE_AP)
         {
-			//sse_data[4] |= BIT4;
+			sse_data[4] |= BIT4;
             enWifiMode = WIFI_Mode_Check();
+
+
+			vTaskDelay(60000 / portTICK_PERIOD_MS);
+			enWifiMode = WIFI_MODE_STA;
+
             ESP_LOGI("MyWiFi","WIFI_Mode_Check: %d",enWifiMode);
             //received new Provisioning Data, but not tested yet.
             if(enWifiMode == WIFI_MODE_STA)
             {
 				stop_OTA_webserver(OTA_server);
 				webserver_status = 0x55;
-				//esp_wifi_disconnect();
 				// stop DHCP server
 				ESP_ERROR_CHECK(tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP));
                 ESP_LOGI("MyWiFi","New Provisioning data received. Stopping Wifi to switch to Station Mode.");
                 ESP_ERROR_CHECK(esp_wifi_stop());
-				vTaskDelay(100 / portTICK_PERIOD_MS);
-				//esp_netif_destroy(my_netif);
-				vTaskDelay(100 / portTICK_PERIOD_MS);
-				//my_netif = esp_netif_create_default_wifi_sta();
+				vTaskDelay(200 / portTICK_PERIOD_MS);
                 ESP_LOGI("MyWiFi","Wifi Station initializing!");
                 ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
                 WIFI_vConfigStation(&OTA_server);
@@ -884,12 +884,10 @@ void vTaskWifiHandler( void * pvParameters )
             else
             {
 				ESP_LOGI("MyWiFi","enWifiMode == WIFI_MODE_AP\r\n");
+				
             }	
         }
 		vTaskDelay(10000 / portTICK_PERIOD_MS);
-
-
-
 	}
     vTaskDelete(NULL);
 }
