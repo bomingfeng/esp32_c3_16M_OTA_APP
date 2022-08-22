@@ -8,6 +8,7 @@
   "idf.flashType": "UART",
   "files.associations": {
     "*.inc": "c",
-    "random": "c"
+    "random": "c",
+    "app_inclued.h": "c"
   }
 }

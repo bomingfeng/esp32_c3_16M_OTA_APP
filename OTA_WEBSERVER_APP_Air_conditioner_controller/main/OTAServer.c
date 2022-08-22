@@ -8,7 +8,7 @@
 #include "freertos/event_groups.h"
 #include "app_inclued.h"
 
-httpd_handle_t OTA_server = NULL;
+extern httpd_handle_t OTA_server = NULL;
 int8_t flash_status = 0;
 TimerHandle_t	xTimer_ota;
 MessageBufferHandle_t HtmlToMcuData;

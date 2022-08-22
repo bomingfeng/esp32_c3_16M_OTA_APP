@@ -155,12 +155,12 @@ void app_main()
 {
     EventBits_t staBits;
 
-    //printf("welcome ！！！Compiled at:");printf(__TIME__);printf(" ");printf(__DATE__);printf("\r\n");
+    ESP_LOGI("app_main", "welcome !!! Compiled at:");
+    ESP_LOGI("app_main", __TIME__);ESP_LOGI("app_main", " ");ESP_LOGI("app_main", __DATE__);ESP_LOGI("app_main", "\r\n");
 
-    //printf("Create the event group,Message......\r\n");
+    ESP_LOGI("app_main","Create the event group,Message......\r\n");
     // Init the event group
 	APP_event_group = xEventGroupCreate();
-
     ble_degC = xMessageBufferCreate(8);
     ble_humidity = xMessageBufferCreate(8);
     ble_Voltage = xMessageBufferCreate(8);
@@ -172,10 +172,10 @@ void app_main()
     IRPS_temp = xMessageBufferCreate(8);
     HtmlToMcuData = xMessageBufferCreate(100);
 
-    //printf("Init GPIO & nvs_flash.....\r\n");
+    ESP_LOGI("app_main","Init GPIO & nvs_flash.....\r\n");
     app_init();
 
-    //printf("Create Task.....\r\n");
+    ESP_LOGI("app_main","Create Task.....\r\n");
     OTA_Task_init();
     // Need this task to spin up, see why in task			
     xTaskCreate(systemRebootTask, "rebootTask", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
@@ -185,7 +185,7 @@ void app_main()
 
 	//MyWiFi_init();
     //xTaskCreate(wifi_ap_sta, "wifi_ap_sta", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
-    xTaskCreate(vTaskWifiHandler, "vTaskWifiHandler", 9216, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    xTaskCreate(vTaskWifiHandler, "vTaskWifiHandler", 6144, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
     xTaskCreate(ds18x20_task,      "ds18x20",3072, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
@@ -225,7 +225,7 @@ void app_main()
     
 
     //xTaskCreate(MultiButton_poll_Task, "Button_poll_Task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
-    xTaskCreate(sntp_task, "sntp_task", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
+    xTaskCreate(sntp_task, "sntp_task", 3072, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
     //xTaskCreate(ADC1_single_read_Task, "ADC1", 2048, NULL, ESP_TASK_PRIO_MIN + 1, NULL);
 
 #ifdef  XL0801

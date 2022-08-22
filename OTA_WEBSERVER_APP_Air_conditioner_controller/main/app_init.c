@@ -35,7 +35,7 @@ void app_init(void)
                 {
                     gpio_set_level(22,1);
                     ii = 0xaa;
-                    //printf("esp_ota_get_next_update_partition\r\n");
+                    ESP_LOGI("app_init","esp_ota_get_next_update_partition\r\n");
                     partition = esp_ota_get_next_update_partition(NULL);
                 }
                 vTaskDelay(1950 / portTICK_PERIOD_MS);
@@ -43,13 +43,13 @@ void app_init(void)
                 {
                     gpio_set_level(23,0);
                     ii = 0xaa;
-                    //printf("ESP_PARTITION_SUBTYPE_APP_FACTORY\r\n");
+                    ESP_LOGI("app_init","ESP_PARTITION_SUBTYPE_APP_FACTORY\r\n");
                     partition = esp_partition_find_first(ESP_PARTITION_TYPE_APP,    \
 				    ESP_PARTITION_SUBTYPE_APP_FACTORY, NULL);
                 }
                 if(ii == 0xaa)
                 {
-                    //printf("restart to boot,%d\r\n",gpio_get_level(CONFIG_INPUT_GPIO));
+                    ESP_LOGI("app_init","restart to boot,%d\r\n",gpio_get_level(CONFIG_INPUT_GPIO));
                     esp_ota_set_boot_partition(partition);
                     vTaskDelay(2000 / portTICK_PERIOD_MS);
                     esp_restart();

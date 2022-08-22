@@ -17,5 +17,5 @@ void printStationList(void);
 void print_sta_info(void *pvParam);
 void wifi_ap_sta(void *pvParam);
 void MyWiFi_init(void);
-void vTaskWifiHandler( void * pvParameters );
+void vTaskWifiHandler( void * pvParameters);
 
