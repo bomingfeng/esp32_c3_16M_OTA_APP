@@ -120,19 +120,17 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
 		}
 		case WIFI_EVENT_STA_DISCONNECTED: {
 			xEventGroupClearBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);
-			if (s_retry_num < 10) 
+			if (s_retry_num < 100) 
 			{
 				esp_wifi_connect();
 				s_retry_num++;
-				ESP_LOGI("MyWiFi","retry to connect to the AP.(%d / %d)\n", s_retry_num,10);
+				ESP_LOGI("MyWiFi","retry to connect to the AP.(%d / %d)\n", s_retry_num,100);
 			} 
 			else
 			{
 				ESP_LOGI("MyWiFi","connect to the AP fail\r\n");
 				xEventGroupSetBits(APP_event_group,APP_event_WIFI_AP_CONNECTED_BIT);
-
 				s_retry_num = 0;
-				
 			}		
 			break;
 		}
@@ -768,11 +766,11 @@ static void WIFI_vConfigStation(void *arg)
 void vTaskWifiHandler( void * pvParameters )
 {
     wifi_mode_t enWifiMode;
-	esp_netif_t * my_netif; 
+	EventBits_t bits; 
 	xEventGroupClearBits(APP_event_group,APP_event_WIFI_AP_CONNECTED_BIT | APP_event_WIFI_STA_CONNECTED_BIT | APP_event_tcp_client_send_BIT);
 
 	enWifiMode = WIFI_Mode_Check();
-	enWifiMode = WIFI_MODE_AP;
+	
     /* Initializing Wi-Fi Station / AccessPoint*/
     WIFI_vInitCommon();
     switch(enWifiMode)
@@ -787,7 +785,10 @@ void vTaskWifiHandler( void * pvParameters )
         case WIFI_MODE_STA:
 			ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
             WIFI_vConfigStation(&OTA_server);
-			if((xEventGroupWaitBits(APP_event_group, APP_event_WIFI_STA_CONNECTED_BIT, pdFALSE, pdFALSE, (1000 / portTICK_PERIOD_MS)/*min*/ * 220) & APP_event_WIFI_STA_CONNECTED_BIT) != APP_event_WIFI_STA_CONNECTED_BIT){
+			/* Start Wi-Fi Station / AccessPoint*/
+			ESP_ERROR_CHECK(esp_wifi_start());
+			bits =xEventGroupWaitBits(APP_event_group, APP_event_WIFI_STA_CONNECTED_BIT, pdFALSE, pdFALSE, (1000 / portTICK_PERIOD_MS)/*min*/ * 220);
+			if((bits & APP_event_WIFI_STA_CONNECTED_BIT) != APP_event_WIFI_STA_CONNECTED_BIT){
 				xEventGroupSetBits(APP_event_group,APP_event_WIFI_AP_CONNECTED_BIT);
 				xEventGroupClearBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);
 			}
@@ -796,28 +797,29 @@ void vTaskWifiHandler( void * pvParameters )
         case WIFI_MODE_AP:
 			ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
             WIFI_vConfigSoftAP(&OTA_server);
+			/* Start Wi-Fi Station / AccessPoint*/
+			ESP_ERROR_CHECK(esp_wifi_start());
+			start_dhcp_server();
         break;
 
         default:
         break;
     }
-	/* Start Wi-Fi Station / AccessPoint*/
-	ESP_ERROR_CHECK(esp_wifi_start());
+	
 	//ESP_LOGI(TAG, "Main task: waiting for connection to the wifi network... ");
-	start_dhcp_server();
-	sse_data[4] |= BIT4;
-	vTaskDelay(60000 / portTICK_PERIOD_MS);
+	
+	
 
     for(;;)
 	{
 		
         if(enWifiMode == WIFI_MODE_STA)
         {
-            //sse_data[4] &= ~BIT4;
+            sse_data[4] &= ~BIT4;
             // wait for connection or disconnect event
-            EventBits_t bits = xEventGroupWaitBits(APP_event_group, APP_event_WIFI_AP_CONNECTED_BIT, pdFALSE, pdFALSE, (100 / portTICK_PERIOD_MS));
+            bits = xEventGroupWaitBits(APP_event_group, APP_event_WIFI_AP_CONNECTED_BIT, pdFALSE, pdFALSE, (100 / portTICK_PERIOD_MS));
             ESP_LOGI("test", "WIFI_MODE_AP0.");
-			if ((bits & APP_event_WIFI_AP_CONNECTED_BIT) == APP_event_WIFI_AP_CONNECTED_BIT) 
+			if((bits & APP_event_WIFI_AP_CONNECTED_BIT) == APP_event_WIFI_AP_CONNECTED_BIT) 
             {
 				enWifiMode = WIFI_MODE_AP;
 				ESP_LOGI("test", "WIFI_MODE_AP5.");
@@ -874,7 +876,8 @@ void vTaskWifiHandler( void * pvParameters )
                 ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
                 WIFI_vConfigStation(&OTA_server);
                 ESP_ERROR_CHECK(esp_wifi_start());
-				if((xEventGroupWaitBits(APP_event_group, APP_event_WIFI_STA_CONNECTED_BIT, pdFALSE, pdFALSE, (1000 / portTICK_PERIOD_MS)/*min*/ * 220) & APP_event_WIFI_STA_CONNECTED_BIT) != APP_event_WIFI_STA_CONNECTED_BIT){
+				bits =xEventGroupWaitBits(APP_event_group, APP_event_WIFI_STA_CONNECTED_BIT, pdFALSE, pdFALSE, (1000 / portTICK_PERIOD_MS)/*min*/ * 220);
+				if((bits & APP_event_WIFI_STA_CONNECTED_BIT) != APP_event_WIFI_STA_CONNECTED_BIT){
 					xEventGroupSetBits(APP_event_group,APP_event_WIFI_AP_CONNECTED_BIT);
 					xEventGroupClearBits(APP_event_group,APP_event_WIFI_STA_CONNECTED_BIT);
 				}
